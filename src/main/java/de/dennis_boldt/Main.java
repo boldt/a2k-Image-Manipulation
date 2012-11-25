@@ -8,16 +8,20 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.kohsuke.args4j.spi.BooleanOptionHandler;
 
+/**
+ *
+ * The Main class
+ *
+ * @author Dennis Boldt
+ *
+ */
 public class Main {
 
-	// EFIF is supported by JPEG ad TIFF
-	private final String[] acceptedTypes = { "image/jpeg" , "image/tiff"};
-
-	// @Option(name="-r",usage="recursively run something")
-	// private boolean recursive;
+	// EXIF is only supported by JPEG and TIFF
+	private final String[] acceptedMimeTypes = { "image/jpeg" , "image/tiff"};
 
 	@Option(name = "--in", usage = "An image or a folder to maipulate", metaVar = "FILE")
-	private File in = null;
+	private File input = null;
 
 	@Option(name = "--out", usage = "A destination folder to store the manipulated files", metaVar = "FOLDER")
 	private File out = null;
@@ -37,38 +41,39 @@ public class Main {
 	@Option(name = "--debug", handler = BooleanOptionHandler.class, usage = "Print java errors, if available.")
 	private boolean isDebug;
 
-	public void doMain(String[] args) {
+	public Main(String[] args) {
+
+		// The args4j command line parser
 		CmdLineParser parser = new CmdLineParser(this);
 		parser.setUsageWidth(80);
 
+		// Parse the arguments
 		try {
 			parser.parseArgument(args);
-			// if( arguments.isEmpty() ) {
-			//
-			// }
+
+			// Check, if move, copy or link is set by the user
 			if (!(isMove ^ isCopy ^ isLink)) {
 				throw new CmdLineException(parser, "--move, --copy or --link must be given");
 			}
 
-			if(in == null) {
+			// An input file/folder must be given
+			if(input == null) {
 				throw new CmdLineException(parser,"--in must be given");
 			}
 
-			if(in.isDirectory()) {
-				handleFolder(in);
-			} else if (in.isFile() && in.exists()) {
-				handleFile(in, 1, 1);
+			if(input.isDirectory()) {
+				handleFolder(input);
+			} else if (input.isFile() && input.exists()) {
+				handleFile(input, 1, 1);
 			} else {
-				System.err.println("File or folder does not exists!");
-				System.exit(0);
+				throw new Exception("File or folder does not exists!");
 			}
-
 		} catch (CmdLineException e) {
-			// an error message.
 			System.err.println(e.getMessage());
+			System.out.println();
 			System.err.println("java " + this.getClass().getName()
 					+ " [options...] arguments...");
-			parser.printUsage(System.err);
+			parser.printUsage(System.out);
 			//System.err.println();
 			// print option sample. This is useful some time
 			//System.err.println(" Example: java " + this.getClass().getName()
@@ -77,18 +82,22 @@ public class Main {
 			if(isDebug) {
 				e.printStackTrace();
 			}
-
-			return;
+			System.exit(0);
 		} catch (Exception e) {
+			System.err.println(e.getMessage());
+			System.out.println();
 			if(isDebug) {
 				e.printStackTrace();
-			} else {
-				System.err.println(e.getMessage());
 			}
 			System.exit(0);
 		}
 	}
 
+	/**
+	 *
+	 * @param folder The folder to be read
+	 * @throws Exception
+	 */
 	private void handleFolder(final File folder) throws Exception {
 		System.out.println("Handle foler " + folder.getAbsolutePath());
 		int i = 1;
@@ -100,16 +109,28 @@ public class Main {
 	    }
 	}
 
+	/**
+	 *
+	 * @param file The file to be parsed
+	 * @param index the index
+	 * @param count th number of all files
+	 * @throws Exception
+	 */
 	private void handleFile(final File file, int index, int count) throws Exception {
 		System.out.print("Handle file " + file.getName() + " (" + index + " of " + count + ")");
 
+		// Get the mimetype
 		String mimetype = FileUtils.mimeType(file);
 
-		if(Arrays.asList(acceptedTypes).contains(mimetype)) {
+		if(Arrays.asList(acceptedMimeTypes).contains(mimetype)) {
+
 			EXIF exif = new EXIF(file);
+
+			// Just add the infix, if it is given
 			if (infix != null) {
 				exif.setInfix(infix);
 			}
+			// Set all other configurations
 			exif.setCopy(isCopy);
 			exif.setLink(isLink);
 			exif.setMove(isMove);
@@ -122,7 +143,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) throws IOException {
-		new Main().doMain(args);
+		new Main(args);
 	}
 
 }
