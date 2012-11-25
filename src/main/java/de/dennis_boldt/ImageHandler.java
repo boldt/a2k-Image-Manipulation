@@ -46,19 +46,25 @@ public class ImageHandler {
 		}
 	}
 
-	private String getNewFileName() throws Exception,
-			SecurityException, IOException {
-		Map<Tag, String> valueMap = tool.getImageMeta(this.inFile,
-				Tag.DATE_TIME_ORIGINAL);
-		String date = valueMap.get(Tag.DATE_TIME_ORIGINAL);
+	private String getNewFileName() throws Exception {
+		try{
+			Map<Tag, String> valueMap = tool.getImageMeta(this.inFile,
+					Tag.DATE_TIME_ORIGINAL);
+			String date = valueMap.get(Tag.DATE_TIME_ORIGINAL);
 
-		if(date == null) {
-			throw new Exception ("EXIF date cannot be read");
+			if(date == null) {
+				throw new Exception ("EXIF date cannot be read");
+			}
+
+			date = date.replaceAll(" ", "_");
+			date = date.replaceAll(":", "-");
+			return date;
+		} catch (Exception e) {
+			if(e.getMessage().contains("exiftool")) {
+				throw new Exception("The external library exiftool is not installed. On Debian/Ubuntu use sudo apt-get install libimage-exiftool-perl");
+			}
+			throw e;
 		}
-
-		date = date.replaceAll(" ", "_");
-		date = date.replaceAll(":", "-");
-		return date;
 	}
 
 	public void setInfix(String infix) {
