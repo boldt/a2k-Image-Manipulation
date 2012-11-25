@@ -1,4 +1,5 @@
-##### a2k Image  Manipulation
+a2k Image  Manipulation
+===
 
 ### Background/About this project
 
