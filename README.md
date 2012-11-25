@@ -37,16 +37,17 @@ It takes all files from /path/to/images and creates files as follows:
 * `--in` The image or folder to be read
 * `--out` (optional) The output folder. If not given, the source folder is used
 * `--infix` (optional) An additional infix
-* `--move` The original file will be renamed
-* `--copy` The original file will be copied
+* `--move` The original file will be renamed OR
+* `--copy` The original file will be copied OR
 * `--link` The original file will be hard linked
-* `--debug` Prints possible Exceptions
+* `--debug` (optional) Prints possible Exceptions
 
 
 ### Thanks to
+
+You rock:
 
 * [args4j](https://github.com/kohsuke/args4j) (Command line arguments parser)
 * [exiftool-lib](http://www.thebuzzmedia.com/software/exiftool-enhanced-java-integration-for-exiftool/) (EXIF library)
 * [jmimemagic](https://github.com/arimus/jmimemagic) (Mime type library)
 
-You rock!
