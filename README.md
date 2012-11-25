@@ -26,7 +26,7 @@ The file `target/a2kImageManipulation-1.0-jar-with-dependencies.jar` will be cre
 java -jar target/a2kImageManipulation-1.0-jar-with-dependencies.jar --in /path/to/images --out /path/to/output --infix "summer" --link 
 ```	
 
-It takes all files from /path/to/images and creates files as follows:
+It takes all files from `/path/to/images` and creates files as follows:
 
 ```
 /path/to/output/YYYY-MM-DD_HH-MM-SS_summer_FILENAME.jpg
