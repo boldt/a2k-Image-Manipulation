@@ -6,6 +6,8 @@ import java.util.Map;
 import com.thebuzzmedia.exiftool.ExifTool;
 import com.thebuzzmedia.exiftool.ExifTool.Tag;
 
+import de.dennis_boldt.utils.FileUtils;
+
 public class ImageHandler {
 
 	private File in = null;

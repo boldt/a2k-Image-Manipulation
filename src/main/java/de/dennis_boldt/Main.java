@@ -8,6 +8,8 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.kohsuke.args4j.spi.BooleanOptionHandler;
 
+import de.dennis_boldt.utils.FileUtils;
+
 /**
  *
  * The Main class
@@ -124,18 +126,19 @@ public class Main {
 
 		if(Arrays.asList(acceptedMimeTypes).contains(mimetype)) {
 
-			EXIF exif = new EXIF(file);
+			ImageHandler handler = new ImageHandler(file);
 
 			// Just add the infix, if it is given
 			if (infix != null) {
-				exif.setInfix(infix);
+				handler.setInfix(infix);
 			}
+
 			// Set all other configurations
-			exif.setCopy(isCopy);
-			exif.setLink(isLink);
-			exif.setMove(isMove);
-			exif.setOut(out);
-			exif.run();
+			handler.setCopy(isCopy);
+			handler.setLink(isLink);
+			handler.setMove(isMove);
+			handler.setOut(out);
+			handler.run();
 			System.out.println(" done");
 		} else {
 			System.out.println("... skipped, because mime type is " + mimetype);
