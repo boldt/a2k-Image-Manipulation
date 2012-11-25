@@ -10,49 +10,45 @@ import de.dennis_boldt.utils.FileUtils;
 
 public class ImageHandler {
 
-	private File in = null;
-	private File out = null;
+	private File inFile = null;
+	private File outFile = null;
 	private String infix = null;
 	private boolean isCopy = false;
 	private boolean isMove = false;
 	private boolean isLink = false;
-	// Needs installed exiftools
 	private ExifTool tool = new ExifTool();
 
 	public ImageHandler(File image) {
-		this.in = image;
+		this.inFile = image;
 	}
 
-	public Boolean run() throws Exception {
+	public void run() throws Exception {
 
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(getNewFileName());
 		if (infix != null) {
 			buffer.append("_" + infix);
 		}
-		buffer.append("_" + in.getName());
+		buffer.append("_" + inFile.getName());
 
-		String folder = (out != null && out.isDirectory()) ?
-				out.getAbsolutePath() :
-					this.in.getParent();
-
+		String folder = (outFile != null && outFile.isDirectory()) ?
+				outFile.getAbsolutePath() : this.inFile.getParent();
 
 		String newFilePath = folder + "/" + buffer.toString();
 		File newFile = new File(newFilePath);
 
 		if(isLink) {
-			FileUtils.hardLink(this.in, newFile);
+			FileUtils.hardLink(this.inFile, newFile);
 		} else if(isCopy) {
-			FileUtils.copy(this.in, newFile);
+			FileUtils.copy(this.inFile, newFile);
 		} else if(isMove) {
-			FileUtils.move(this.in, newFile);
+			FileUtils.move(this.inFile, newFile);
 		}
-		return true;
 	}
 
 	private String getNewFileName() throws Exception,
 			SecurityException, IOException {
-		Map<Tag, String> valueMap = tool.getImageMeta(this.in,
+		Map<Tag, String> valueMap = tool.getImageMeta(this.inFile,
 				Tag.DATE_TIME_ORIGINAL);
 		String date = valueMap.get(Tag.DATE_TIME_ORIGINAL);
 
@@ -82,7 +78,7 @@ public class ImageHandler {
 	}
 
 	public void setOut(File out) {
-		this.out = out;
+		this.outFile = out;
 	}
 
 }

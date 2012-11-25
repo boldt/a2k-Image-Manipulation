@@ -9,15 +9,15 @@ import net.sf.jmimemagic.Magic;
 import net.sf.jmimemagic.MagicMatch;
 
 /*
- * http://www.onyxbits.de/content/blog/patrick/how-deal-filesystem-softlinkssymbolic-links-java
+ * @see: http://www.onyxbits.de/content/blog/patrick/how-deal-filesystem-softlinkssymbolic-links-java
  */
 public class FileUtils {
 
 	/*
-	 * With java 7
-	 * http://www.javabeat.net/2012/07/creating-hard-links-and-soft-links-for-a-file-in-java/
-	 * http://www.tutego.de/blog/javainsel/2011/06/dateien-kopieren-und-verschieben-mit-files-methode-in-java-7/
-	 * http://docs.oracle.com/javase/tutorial/essential/io/links.html
+	 * TODO: Java 7
+	 * @see: http://www.javabeat.net/2012/07/creating-hard-links-and-soft-links-for-a-file-in-java/
+	 * @see: http://www.tutego.de/blog/javainsel/2011/06/dateien-kopieren-und-verschieben-mit-files-methode-in-java-7/
+	 * @see: http://docs.oracle.com/javase/tutorial/essential/io/links.html
 	 *
 	 * Files.createLink(hLink, file1);
 	 * Files.createSymbolicLink(sLink, file1);
