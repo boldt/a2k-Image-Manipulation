@@ -1,8 +1,8 @@
-##### a2k Image  Manipulation ===
+##### a2k Image  Manipulation
 
 ### Background/About this project
 
-This small project is a simple command line tool which renames/moves/links files by prepending the creation date (from the EXIF data) and adding an optional infix to the file name.
+This small project is a simple command line tool which renames/moves/links images by prepending the creation date (from the EXIF data) and adding an optional infix to the file name.
 
 ### Get it:
 
