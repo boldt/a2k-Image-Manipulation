@@ -6,7 +6,7 @@ import java.util.Map;
 import com.thebuzzmedia.exiftool.ExifTool;
 import com.thebuzzmedia.exiftool.ExifTool.Tag;
 
-public class EXIF {
+public class ImageHandler {
 
 	private File in = null;
 	private File out = null;
@@ -17,7 +17,7 @@ public class EXIF {
 	// Needs installed exiftools
 	private ExifTool tool = new ExifTool();
 
-	public EXIF(File image) {
+	public ImageHandler(File image) {
 		this.in = image;
 	}
 
