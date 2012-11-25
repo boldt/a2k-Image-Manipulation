@@ -37,8 +37,8 @@ It takes all files from /path/to/images and creates files as follows:
 
 ### Thanks to
 
-* args4j (Command line arguments)
-* exiftool-li (EXIF library)
-* jmimemagic (Mime type library)
+* [args4j](https://github.com/kohsuke/args4j) (Command line arguments)
+* [exiftool-lib](http://www.thebuzzmedia.com/software/exiftool-enhanced-java-integration-for-exiftool/) (Java EXIF library)
+* [jmimemagic](https://github.com/arimus/jmimemagic) (Mime type library)
 
 You rock!
