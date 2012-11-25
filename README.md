@@ -7,26 +7,33 @@ This small project is a simple command line tool which renames/moves/links image
 
 ### Get it:
 
-	git clone git@github.com:boldt/a2k-Image-Manipulation.git
+```
+git clone git@github.com:boldt/a2k-Image-Manipulation.git
+```
 
 ### Build it:
-	
-	cd a2k-Image-Manipulation
-	mvn clean package
+
+```	
+cd a2k-Image-Manipulation
+mvn clean package
+```
 
 ### Run it:
 
 An example:
 
-	java -jar ImageManipulation-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
-		--in /path/to/images 
-		--out /path/to/output
-		--infix "summer" 
-		--link 
-	
+```
+java -jar ImageManipulation-0.0.1-SNAPSHOT-jar-with-dependencies.jar 
+	--in /path/to/images 
+	--out /path/to/output
+	--infix "summer" 
+	--link 
+```	
 It takes all files from /path/to/images and creates files as follows:
 
-	/path/to/output/YYYY-MM-DD_HH-MM-SS_summer_FILENAME.jpg
+```
+/path/to/output/YYYY-MM-DD_HH-MM-SS_summer_FILENAME.jpg
+```
 
 ### Thanks to
 
