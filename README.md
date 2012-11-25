@@ -18,12 +18,12 @@ cd a2k-Image-Manipulation
 mvn clean package
 ```
 
+The file `target/a2kImageManipulation-1.0-jar-with-dependencies.jar` will be created.
+
 ### Run it:
 
-An example:
-
 ```
-java -jar ImageManipulation-0.0.1-SNAPSHOT-jar-with-dependencies.jar --in /path/to/images --out /path/to/output --infix "summer" --link 
+java -jar target/a2kImageManipulation-1.0-jar-with-dependencies.jar --in /path/to/images --out /path/to/output --infix "summer" --link 
 ```	
 
 It takes all files from /path/to/images and creates files as follows:
