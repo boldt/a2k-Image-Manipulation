@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dennis_boldt</groupId>
 	<artifactId>a2kImageManipulation</artifactId>
-	<version>1.0</version>
+	<version>1.1-snapshot</version>
 
 	<repositories>
 		<repository>
