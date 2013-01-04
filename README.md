@@ -18,12 +18,12 @@ cd a2k-Image-Manipulation
 mvn clean package
 ```
 
-The file `target/a2kImageManipulation-1.0-jar-with-dependencies.jar` will be created.
+The file `target/a2kImageManipulation-1.1-boldt-SNAPSHOT.jar` will be created.
 
 ### Run it:
 
 ```
-java -jar target/a2kImageManipulation-1.0-jar-with-dependencies.jar --in /path/to/images --out /path/to/output --infix "summer" --link 
+java -jar target/a2kImageManipulation-1.1-boldt-SNAPSHOT.jar --in /path/to/images --out /path/to/output --infix "summer" --link 
 ```	
 
 It takes all files from `/path/to/images` and creates files as follows:
@@ -41,7 +41,6 @@ It takes all files from `/path/to/images` and creates files as follows:
 * `--copy` The original file will be copied OR
 * `--link` The original file will be hard linked
 * `--debug` (optional) Prints possible Exceptions
-
 
 ### Thanks to
 

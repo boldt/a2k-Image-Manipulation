@@ -1,6 +1,5 @@
 package de.dennis_boldt;
 import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
 import com.thebuzzmedia.exiftool.ExifTool;
@@ -26,6 +25,7 @@ public class ImageHandler {
 
 		StringBuffer buffer = new StringBuffer();
 		buffer.append(getNewFileName());
+
 		if (infix != null) {
 			buffer.append("_" + infix);
 		}
@@ -53,7 +53,7 @@ public class ImageHandler {
 			String date = valueMap.get(Tag.DATE_TIME_ORIGINAL);
 
 			if(date == null) {
-				throw new Exception ("EXIF date cannot be read");
+				throw new ExifException ("EXIF date cannot be read");
 			}
 
 			date = date.replaceAll(" ", "_");
@@ -61,7 +61,7 @@ public class ImageHandler {
 			return date;
 		} catch (Exception e) {
 			if(e.getMessage().contains("exiftool")) {
-				throw new Exception("The external library exiftool is not installed. On Debian/Ubuntu use sudo apt-get install libimage-exiftool-perl");
+				throw new ExifException("The external library exiftool is not installed. On Debian/Ubuntu use sudo apt-get install libimage-exiftool-perl");
 			}
 			throw e;
 		}
