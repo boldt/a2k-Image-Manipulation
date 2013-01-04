@@ -76,23 +76,25 @@ public class Main {
 			System.err.println("java " + this.getClass().getName()
 					+ " [options...] arguments...");
 			parser.printUsage(System.out);
-			//System.err.println();
-			// print option sample. This is useful some time
-			//System.err.println(" Example: java " + this.getClass().getName()
+			// FIXME: not all param are allowed!
+			// System.err.println(" Example: java " + this.getClass().getName()
 			//		+ parser.printExample(in));
 
 			if(isDebug) {
 				e.printStackTrace();
 			}
-			System.exit(0);
+			System.exit(1);
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
 			System.out.println();
 			if(isDebug) {
 				e.printStackTrace();
+			} else {
+				System.err.println(e.getMessage());
 			}
-			System.exit(0);
+			System.exit(1);
 		}
+		System.out.println("Successful.");
+		System.exit(0);
 	}
 
 	/**
@@ -101,7 +103,7 @@ public class Main {
 	 * @throws Exception
 	 */
 	private void handleFolder(final File folder) throws Exception {
-		System.out.println("Handle foler " + folder.getAbsolutePath());
+		System.out.println("Handle folder " + folder.getAbsolutePath());
 		int i = 1;
 		int count = folder.listFiles().length;
 		for (final File fileEntry : folder.listFiles()) {
