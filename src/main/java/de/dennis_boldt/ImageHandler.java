@@ -5,7 +5,7 @@ import java.util.Map;
 import com.thebuzzmedia.exiftool.ExifTool;
 import com.thebuzzmedia.exiftool.ExifTool.Tag;
 
-import de.dennis_boldt.utils.FileUtils;
+import de.dennis_boldt.utils.FileUtil;
 
 public class ImageHandler {
 
@@ -38,11 +38,11 @@ public class ImageHandler {
 		File newFile = new File(newFilePath);
 
 		if(isLink) {
-			FileUtils.hardLink(this.inFile, newFile);
+			FileUtil.hardLink(this.inFile, newFile);
 		} else if(isCopy) {
-			FileUtils.copy(this.inFile, newFile);
+			FileUtil.copy(this.inFile, newFile);
 		} else if(isMove) {
-			FileUtils.move(this.inFile, newFile);
+			FileUtil.move(this.inFile, newFile);
 		}
 	}
 

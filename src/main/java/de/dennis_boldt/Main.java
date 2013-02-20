@@ -8,7 +8,7 @@ import org.kohsuke.args4j.CmdLineParser;
 import org.kohsuke.args4j.Option;
 import org.kohsuke.args4j.spi.BooleanOptionHandler;
 
-import de.dennis_boldt.utils.FileUtils;
+import de.dennis_boldt.utils.MimeTypeUtil;
 
 /**
  *
@@ -124,7 +124,7 @@ public class Main {
 		System.out.print("Handle file " + file.getName() + " (" + index + " of " + count + ")");
 
 		// Get the mimetype
-		String mimetype = FileUtils.mimeType(file);
+		String mimetype = MimeTypeUtil.getMimeType(file);
 
 		if(Arrays.asList(acceptedMimeTypes).contains(mimetype)) {
 

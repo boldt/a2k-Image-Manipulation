@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.dennis_boldt</groupId>
 	<artifactId>a2kImageManipulation</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 
 	<repositories>
 		<repository>
@@ -26,9 +26,9 @@
 			<version>2.0.15</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.jna</groupId>
-			<artifactId>jna</artifactId>
-			<version>3.0.9</version>
+			<groupId>de.dennis_boldt</groupId>
+			<artifactId>Utils</artifactId>
+			<version>0.0.10</version>
 		</dependency>
 		<dependency>
 			<groupId>jmimemagic</groupId>
