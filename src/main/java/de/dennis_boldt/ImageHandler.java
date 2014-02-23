@@ -40,9 +40,9 @@ public class ImageHandler {
 		if(isLink) {
 			FileUtil.hardLink(this.inFile, newFile);
 		} else if(isCopy) {
-			FileUtil.copy(this.inFile, newFile);
+			FileUtil.copy(this.inFile, newFile, true);
 		} else if(isMove) {
-			FileUtil.move(this.inFile, newFile);
+			FileUtil.move(this.inFile, newFile, true);
 		}
 	}
 

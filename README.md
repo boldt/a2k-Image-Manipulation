@@ -5,6 +5,10 @@ a2k Image  Manipulation
 
 This small project is a simple java based command line tool for linux which renames/moves/links images by prepending the creation date (from the EXIF data) and adding an optional infix to the file name.
 
+### Dependencies
+
+* Maven3
+
 ### Get it:
 
 ```
